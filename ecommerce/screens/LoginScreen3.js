@@ -1,26 +1,25 @@
-
-//LOGIN SCREEN SIMPLES SEM FIREBASE, PARA TESTES mude o nome no app.js  ou entao altere o nome desse arquivopara LoginScreen.js para que ela seja usada
-
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import firebase from '../firebase/Firebaseconfig';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Verificação simples de usuário e senha
-    if (email === 'admin' && password === 'admin') {
-      navigation.replace('Main'); // Navega para a página principal  se a autenticacao for valida
-    } else {
-      alert('Usuário ou senha inválidos'); // Mostra uma mensagem de erro se falhar a autenticacao 
-    }
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        navigation.replace('Main');
+      })
+      .catch(error => {
+        alert(error.message);
+      });
   };
 
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Usuário"
+        placeholder="Email"
         value={email}
         onChangeText={setEmail}
         style={styles.input}

@@ -20,11 +20,20 @@ function SettingsScreen() {
   );
 }
 
+function AboutScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Sobre!</Text>
+    </View>
+  );
+}
+
 export default function MainScreen() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="About" component={AboutScreen} title="Sobre" />
     </Tab.Navigator>
   );
 }

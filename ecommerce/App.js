@@ -23,7 +23,7 @@ export default function App() {
         />
         <Stack.Screen
           name="Main"
-          component={MainScreen} // Este componente precisa estar criado e configurado
+          component={MainScreen} 
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

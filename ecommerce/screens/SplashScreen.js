@@ -10,7 +10,7 @@ export default function SplashScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Bem-vindo ao nosso e-commerce!</Text>
+      <Text style={styles.text}>Bem vindo ao JEan`s Ifood</Text>
     </View>
   );
 }
