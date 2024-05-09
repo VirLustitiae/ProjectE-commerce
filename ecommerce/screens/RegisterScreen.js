@@ -1,28 +1,28 @@
-// LoginScreen.js
+// RegisterScreen.js
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, ActivityIndicator } from 'react-native';
-import { login } from '../firebase/auth';
+import { createUser } from '../firebase/auth';
 
-export default function LoginScreen({ navigation }) {
+export default function RegisterScreen({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleLogin = async () => {
+    const handleSignUp = async () => {
         setIsLoading(true);
         setErrorMessage('');
         try {
-            const token = await login(email, password);
+            const token = await createUser(email, password);
             if (token) {
-                console.log("Autenticação bem-sucedida", token);
-                navigation.replace('Main');
+                console.log("Cadastro bem-sucedido", token);
+                navigation.pop();  // Assumindo que o cadastro é uma página empilhada sobre a de login
             } else {
-                setErrorMessage('Usuário ou senha inválidos');
+                setErrorMessage('Erro ao criar o usuário');
             }
         } catch (error) {
-            console.error('Erro de autenticação', error);
-            setErrorMessage('Usuário ou senha inválidos');
+            console.error('Erro de cadastro', error);
+            setErrorMessage('Erro ao criar o usuário');
         } finally {
             setIsLoading(false);
         }
@@ -48,10 +48,7 @@ export default function LoginScreen({ navigation }) {
             {isLoading ? (
                 <ActivityIndicator size="large" color="#0000ff" />
             ) : (
-                <>
-                    <Button title="Entrar" onPress={handleLogin} />
-                    <Button title="Cadastrar" onPress={() => navigation.navigate('Register')} />
-                </>
+                <Button title="Cadastrar" onPress={handleSignUp} />
             )}
             {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
         </View>
