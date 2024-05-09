@@ -5,7 +5,7 @@ Trabalho Final em reac-native
 
 # Aplicativo de Gerenciamento de Ecommerce
 
-### Entraga
+### Entrega
 A entrega deve ser realizada até o último dia de aula, no dia 14/05.
 Os trabalhos serão apresentados em sala pelos grupos.
 
