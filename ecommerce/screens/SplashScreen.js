@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import LottieView from 'lottie-react-native' 
 
 export default function SplashScreen({ navigation }) {
   useEffect(() => {
@@ -10,7 +11,10 @@ export default function SplashScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Bem vindo ao JEan`s Ifood</Text>
+      <LottieView source={require('../assets/Animation - 1715284057317.json')}
+      autoPlay={true}
+      style={{
+        height: 700, width: 700}}></LottieView>
     </View>
   );
 }
@@ -18,12 +22,9 @@ export default function SplashScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#f2f2f2',
+    alignItems: "center",
+    justifyContent: "flex-end",
+    flexDirection: "column"
   },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  }
 });

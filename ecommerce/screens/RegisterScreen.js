@@ -1,6 +1,5 @@
-// RegisterScreen.js
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, ActivityIndicator } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { createUser } from '../firebase/auth';
 
 export default function RegisterScreen({ navigation }) {
@@ -51,6 +50,7 @@ export default function RegisterScreen({ navigation }) {
                 <Button title="Cadastrar" onPress={handleSignUp} />
             )}
             {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
+            <Button title="Voltar para Login" onPress={() => navigation.goBack()} color="#FF6347" />
         </View>
     );
 }
