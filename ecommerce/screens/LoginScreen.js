@@ -15,9 +15,9 @@ export default function LoginScreen({ navigation }) {
       const token = await login(email, password);
       if (token) {
         console.log("Autenticação bem-sucedida", token);
-        navigation.replace('Main'); // Navega para a página principal se a autenticação for válida
+        navigation.replace('Main'); 
       } else {
-        setErrorMessage('Usuário ou senha inválidos'); // Não deve ocorrer, já que os erros são capturados pelo catch
+        setErrorMessage('Usuário ou senha inválidos'); 
       }
     } catch (error) {
       console.error('Erro de autenticação', error);
