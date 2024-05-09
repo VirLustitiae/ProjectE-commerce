@@ -4,7 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from './screens/SplashScreen';
 import LoginScreen from './screens/LoginScreen';
 import MainScreen from './screens/MainScreen';
-import RegisterScreen from './screens/RegisterScreen'; // Certifique-se de que o caminho está correto
+import RegisterScreen from './screens/RegisterScreen';
+import AddProductScreen from './screens/AddProductScreen'; // Certifique-se de que o caminho está correto
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,11 @@ export default function App() {
           name="Register"
           component={RegisterScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddProduct"
+          component={AddProductScreen}
+          options={{ title: 'Adicionar Produto', headerShown: true }} 
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,54 +1,46 @@
-import { api } from "./api"
+import { api } from "./api";
 
 export const storeProducts = async (productData) => {
     try {
-        const response = await api.post('/products.json', productData)
-        console.log(response.data.name)
+        const response = await api.post('/products.json', productData);
+        return { success: true, data: response.data };  // Indica sucesso e retorna os dados.
     } catch (err) {
-        console.log(err)
+        console.error(err);
+        return { success: false, error: err };  // Indica falha e retorna o erro.
     }
-}
+};
 
 export const getAllProducts = async () => {
-    
+    const products = [];
     try {
-        const products = []
-        const response = await api.get('/products.json')
-
-        for(key in response.data) {
-            const product = {
-                ...response.data[key],
-                id: key,
-            }
-            products.push(product)
+        const response = await api.get('/products.json');
+        for (const key in response.data) {
+            const product = { ...response.data[key], id: key };
+            products.push(product);
         }
         return products;
-    } catch(err) {
-        console.log(err)
+    } catch (err) {
+        console.error(err);
+        throw err;
     }
+};
 
-}
-
-export const deleteProducts = async () => {
+export const deleteProducts = async (productId) => {
     try {
-        const response = await api.delete("/products/"+"-Nx3B3PzXZgzr9KBDDNd"+".json")
-        console.log(response)
-    } catch(err) {
-        console.log("ERRO: ", err)
+        const response = await api.delete(`/products/${productId}.json`);
+        return response.data;
+    } catch (err) {
+        console.error("ERRO: ", err);
+        throw err;
     }
-}
+};
 
-export const updateProducts = async () => {
+export const updateProducts = async (productId, productData) => {
     try {
-        const response = await api.put('/products/-Nx3B3_QWPLibh-gocYY.json', {
-            title: "Fazer o Trabalho Final de React Native",
-            description: "Todo mundo vai trabalhar",
-            priority: "alta"
-        })
-    } catch(err) {
-        console.log("ERRO: ", err)
+        const response = await api.put(`/products/${productId}.json`, productData);
+        return response.data;
+    } catch (err) {
+        console.error("ERRO: ", err);
+        throw err;
     }
-}
-
-
-//const getProductbyId = () => {}
+};
