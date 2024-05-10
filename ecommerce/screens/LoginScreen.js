@@ -46,6 +46,7 @@ export default function LoginScreen({ navigation }) {
           value={password}
           secureTextEntry
           onChangeText={setPassword}
+          keyboardType="numeric"
           style={styles.input}
         />
       </View>
